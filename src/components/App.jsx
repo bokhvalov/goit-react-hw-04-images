@@ -15,22 +15,22 @@ export const App = () => {
   const [modalImg, setModalImg] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    // if (!filter && page === 1) {
-    //   return;
-    // }
+  // useEffect(() => {
+  //   // if (!filter && page === 1) {
+  //   //   return;
+  //   // }
 
-    getImages(filter, page);
-  }, [filter, page]);
+  //   getImages(filter, page);
+  // }, [filter, page]);
 
-  const getImages = async () => {
-    setLoading(true);
-    const { totalHits, hits } = await serchImg(filter, page);
-    const availablePages = Math.ceil(totalHits / 12);
-    setAvailablePages(availablePages);
-    setImages([...images, ...hits]);
-    setLoading(false);
-  };
+  // const getImages = async () => {
+  //   setLoading(true);
+  //   const { totalHits, hits } = await serchImg(filter, page);
+  //   const availablePages = Math.ceil(totalHits / 12);
+  //   setAvailablePages(availablePages);
+  //   setImages([...images, ...hits]);
+  //   setLoading(false);
+  // };
 
 
   const submitHandler = searchValue => {

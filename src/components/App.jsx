@@ -19,19 +19,19 @@ export const App = () => {
     // if (!filter && page === 1) {
     //   return;
     // }
-    const getImages = async () => {
-      setLoading(true);
-      const { totalHits, hits } = await serchImg(filter, page);
-      const availablePages = Math.ceil(totalHits / 12);
-      setAvailablePages(availablePages);
-      setImages([...images, ...hits]);
-      setLoading(false);
-    };
 
     getImages(filter, page);
   }, [filter, page]);
 
-  
+  const getImages = async () => {
+    setLoading(true);
+    const { totalHits, hits } = await serchImg(filter, page);
+    const availablePages = Math.ceil(totalHits / 12);
+    setAvailablePages(availablePages);
+    setImages([...images, ...hits]);
+    setLoading(false);
+  };
+
 
   const submitHandler = searchValue => {
     const trimmedSearchValue = searchValue?.trim() || '';

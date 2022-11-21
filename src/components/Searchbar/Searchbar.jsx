@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import css from './Searchbar.module.css';
 import PropTypes from 'prop-types';
 
-export class Searchbar extends Component {
-  submitHandler= (evt) => {
+export const Searchbar = ({onSubmit}) => {
+  const submitHandler= evt => {
     evt.preventDefault();
-    this.props.onSubmit(evt.target.elements.searchField.value)
+    onSubmit(evt.target.elements.searchField.value)
   }
 
-  render() {
     return (
       <header className={css.Searchbar}>
-        <form onSubmit={this.submitHandler} className={css.SearchForm}>
+        <form onSubmit={submitHandler} className={css.SearchForm}>
           <button type="submit" className={css.SearchFormButton}>
             <span className={css.SearchFormButtonLabel}>Search</span>
           </button>
@@ -28,7 +27,6 @@ export class Searchbar extends Component {
       </header>
     );
   }
-}
 
 Searchbar.propTypes={
   onSubmit:PropTypes.func

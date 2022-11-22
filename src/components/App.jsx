@@ -24,7 +24,7 @@ export const App = () => {
       const { totalHits, hits } = await serchImg(filter, page);
       const availablePages = Math.ceil(totalHits / 12);
       setAvailablePages(availablePages);
-      setImages([...images, ...hits]);
+      setImages((images)=>[...images, ...hits]);
       setLoading(false);
     };
 

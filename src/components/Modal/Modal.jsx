@@ -3,18 +3,22 @@ import css from './Modal.module.css';
 import PropTypes from 'prop-types';
 
 export const Modal = ({ modalImg, onCloseModal }) => {
-  useEffect(() => {
-    window.addEventListener('keydown', onWindowKeypress);
-    return () => {
-      window.removeEventListener('keydown', onWindowKeypress);
-    };
-  }, []);
 
-  const onWindowKeypress = evt => {
-    if (evt.key === 'Escape') {
-      onCloseModal();
-    }
-  };
+
+  
+  useEffect(() => {
+    function onWindowKeypress (evt) {
+      if (evt.key === 'Escape') {
+        onCloseModal();
+      }
+    };
+    window.addEventListener('keydown', evt => onWindowKeypress(evt));
+    return () => {
+      window.removeEventListener('keydown', evt => onWindowKeypress(evt));
+    };
+  }, [onCloseModal]);
+
+
   const { largeImageURL, tags } = modalImg;
 
   return (
